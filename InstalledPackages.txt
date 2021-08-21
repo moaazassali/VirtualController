@@ -1,0 +1,11 @@
+npm install @reduxjs/toolkit
+npm install react-redux
+npm install @react-native-async-storage/async-storage
+--> check for iOS CocoaPods https://react-native-async-storage.github.io/async-storage/docs/install/
+npm i react-native-draggable
+npm install --save react-native-vector-icons
+added "../../node_modules/react-native-vector-icons/fonts.gradle" to android/app/build.gradle
+--> check for iOS CocoaPods https://github.com/oblador/react-native-vector-icons
+npm i react-native-modal
+added android:windowSoftInputMode="adjustPan" to AndroidManifest.xml
+added android:screenOrientation="landscape" to AndroidManifest.xml
