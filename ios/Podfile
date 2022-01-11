@@ -12,6 +12,8 @@ target 'VirtualController' do
     :hermes_enabled => false
   )
 
+
+
   target 'VirtualControllerTests' do
     inherit! :complete
     # Pods for testing
@@ -22,6 +24,8 @@ target 'VirtualController' do
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
   use_flipper!()
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   post_install do |installer|
     react_native_post_install(installer)

@@ -49,7 +49,6 @@ export default function EditingOptions({ exitFunc }) {
 
             <Pressable
               onPress={() => {
-                console.log(selectedProfile);
                 dispatch(
                   updateLayout({
                     id: selectedProfile.id,

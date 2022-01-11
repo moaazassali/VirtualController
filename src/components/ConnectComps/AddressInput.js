@@ -1,21 +1,28 @@
 import React from 'react';
-import { useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, TextInput, Pressable } from 'react-native';
+
+import { useDispatch } from 'react-redux';
+import { setAddress } from '../../redux/networkingSlice';
 
 import Spacer from '../Spacer';
 
 import styles, { placeholderColor } from './styles';
 
 export default function AddressInput() {
-  const [addressParts, setaddressParts] = useState(['', '', '', '']);
-  const [address, setAddress] = useState('');
+  const [addressParts, setaddressParts] = useState(['192', '168', '70', '129']);
+
+  const dispatch = useDispatch();
 
   const editAddressParts = (text, index) => {
     const newArr = [...addressParts];
     newArr[index] = text;
     setaddressParts(newArr);
-    setAddress(addressParts.join('.'));
   };
+
+  useEffect(() => {
+    dispatch(setAddress({ address: addressParts.join('.') }));
+  }, [addressParts]);
 
   return (
     <View style={styles.address_container}>

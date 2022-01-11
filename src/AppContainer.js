@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { useSelector } from 'react-redux';
 import { selectCurrentScreen } from './redux/uiSlice';
@@ -33,10 +34,11 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#121212' }}>
+    <GestureHandlerRootView
+      style={{ flex: 1, flexDirection: 'row', backgroundColor: '#121212' }}>
       <StatusBar hidden />
       <ScreensMenu />
       {renderedScreen}
-    </View>
+    </GestureHandlerRootView>
   );
 }

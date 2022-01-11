@@ -12,6 +12,8 @@ import Spacer from '../components/Spacer';
 import CreateProfileForm from '../components/ProfilesComps/Options/CreateProfileForm';
 import ProfileList from '../components/ProfilesComps/Options/ProfileList';
 import { LayoutControllerItem } from '../components/ProfilesComps/Layout/ControllerItem';
+import EditingControllerButton from '../components/ControllerComponents/ControllerButtons/EditingControllerButton';
+import EditingControllerStick from '../components/ControllerComponents/ControllerSticks/EditingControllerStick';
 import EditingOptions from '../components/ProfilesComps/Layout/EditingOptions';
 
 let viewWidth = 0;
@@ -23,17 +25,70 @@ export default function ProfilesScreen() {
   const dispatch = useDispatch();
   const staticProfileCopy = useSelector(selectStaticProfileCopy);
 
-  const addedItems = staticProfileCopy.layout.map(item => (
-    <LayoutControllerItem
-      input={item.input}
-      id={item.id}
-      xPos={item.xPos}
-      yPos={item.yPos}
-      maxX={viewWidth}
-      maxY={viewHeight}
-      key={item.id}
-    />
-  ));
+  const addedItems = staticProfileCopy.layout.map(item => {
+    // if (item.input == 'RS' || item.input == 'LS')
+    //   return (
+    //     <EditingControllerStick
+    //       id={item.id}
+    //       input={item.input}
+    //       text={item.input} //FIX
+    //       xPos={item.xPos}
+    //       yPos={item.yPos}
+    //       minX={0}
+    //       maxX={viewWidth - (item.stickDiameter + 2 * item.maxDistance)}
+    //       minY={0}
+    //       maxY={viewHeight - (item.stickDiameter + 2 * item.maxDistance)}
+    //       stickDiameter={item.stickDiameter}
+    //       maxDistance={item.maxDistance}
+    //       outerBorderWidth={item.outerBorderWidth}
+    //       outerBorderColor={item.outerBorderColor}
+    //       innerBackgroundColor={item.innerBackgroundColor}
+    //       fontSize={item.fontSize}
+    //       fontWeight={item.fontWeight}
+    //       fontColor={item.fontColor}
+    //       key={item.id}
+    //     />
+    //   );
+    // else
+    //   return (
+    //     <EditingControllerButton
+    //       id={item.id}
+    //       input={item.input}
+    //       text={item.input} //FIX
+    //       xPos={item.xPos}
+    //       yPos={item.yPos}
+    //       minX={0}
+    //       maxX={viewWidth - item.width}
+    //       minY={0}
+    //       maxY={viewHeight - item.height}
+    //       width={item.width}
+    //       height={item.height}
+    //       borderWidth={item.borderWidth}
+    //       borderRadius={item.borderRadius}
+    //       borderColor={item.borderColor}
+    //       backgroundColor={item.backgroundColor}
+    //       fontSize={item.fontSize}
+    //       fontWeight={item.fontWeight}
+    //       fontColor={item.fontColor}
+    //       key={item.id}
+    //     />
+    //   );
+
+    return (
+      <LayoutControllerItem
+        type={item.input == 'RS' || item.input == 'LS' ? 'stick' : 'button'}
+        input={item.input}
+        id={item.id}
+        xPos={item.xPos}
+        yPos={item.yPos}
+        maxX={viewWidth}
+        maxY={viewHeight}
+        width={item.width}
+        height={item.height}
+        key={item.id}
+      />
+    );
+  });
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);

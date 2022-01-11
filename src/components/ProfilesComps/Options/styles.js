@@ -29,6 +29,7 @@ export default StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 5,
     fontSize: textProps.size.m,
+    color: textProps.emphasis.high,
   },
   createProfile_button: {
     backgroundColor: darkThemeProps.primary,

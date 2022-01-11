@@ -34,6 +34,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     fontSize: textProps.size.l,
     textAlign: 'center',
+    color: textProps.emphasis.high,
   },
   addressParts_separator: {
     fontSize: textProps.size.xl,
@@ -105,17 +106,15 @@ export default StyleSheet.create({
   // FunctionalControllerItem.js
   controller_button: {
     position: 'absolute',
-    borderRadius: 10,
-    padding: 10,
-    borderWidth: 2,
-    borderColor: darkThemeProps.primary,
-    aspectRatio: 1,
     alignItems: 'center',
-    zIndex: 1,
+    justifyContent: 'center',
   },
   controller_button_innerview: {
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: darkThemeProps.primary,
     alignItems: 'center',
-    aspectRatio: 1,
+    justifyContent: 'center',
   },
   controller_button_text: {
     fontSize: textProps.size.xl,
@@ -124,8 +123,6 @@ export default StyleSheet.create({
   },
   controller_stick_container: {
     position: 'absolute',
-    left: 100,
-    top: 100,
     width: 200,
     height: 200,
     borderWidth: 2,
@@ -133,7 +130,6 @@ export default StyleSheet.create({
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 1,
   },
   controller_stick_draggable: {
     width: 150,
@@ -146,5 +142,10 @@ export default StyleSheet.create({
   controller_stick_text: {
     fontSize: textProps.size.xl,
     color: textProps.emphasis.high,
+  },
+  controller_stick_text: {
+    fontSize: textProps.size.xl,
+    color: textProps.emphasis.high,
+    fontWeight: textProps.weight.bold,
   },
 });

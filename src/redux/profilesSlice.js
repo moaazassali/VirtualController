@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
@@ -130,13 +131,102 @@ const slice = createSlice({
     },
 
     addItem: (state, action) => {
-      const { input } = action.payload;
+      const { type, input, width, height } = action.payload;
+      const selectedProfile = state.selectedProfile;
+      const addedItem = {
+        id: uuidv4(),
+        type,
+        input,
+        xPos: state.viewDimensions.width / 2 - 50,
+        yPos: state.viewDimensions.height / 2 - 50,
+        width,
+        height,
+      };
+      state.selectedProfile = {
+        ...selectedProfile,
+        layout: [...selectedProfile.layout, addedItem],
+      };
+
+      state.staticProfileCopy = {
+        ...state.staticProfileCopy,
+        layout: [...state.staticProfileCopy.layout, addedItem],
+      };
+    },
+
+    addButton: (state, action) => {
+      const {
+        input,
+        text,
+        xPos,
+        yPos,
+        width,
+        height,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        backgroundColor,
+        fontSize,
+        fontWeight,
+        fontColor,
+      } = action.payload;
       const selectedProfile = state.selectedProfile;
       const addedItem = {
         id: uuidv4(),
         input,
-        xPos: state.viewDimensions.width / 2 - 50,
-        yPos: state.viewDimensions.height / 2 - 50,
+        text,
+        xPos,
+        yPos,
+        width,
+        height,
+        borderWidth,
+        borderRadius,
+        borderColor,
+        backgroundColor,
+        fontSize,
+        fontWeight,
+        fontColor,
+      };
+      state.selectedProfile = {
+        ...selectedProfile,
+        layout: [...selectedProfile.layout, addedItem],
+      };
+
+      state.staticProfileCopy = {
+        ...state.staticProfileCopy,
+        layout: [...state.staticProfileCopy.layout, addedItem],
+      };
+    },
+
+    addStick: (state, action) => {
+      const {
+        input,
+        text,
+        xPos,
+        yPos,
+        stickDiameter,
+        maxDistance,
+        outerBorderWidth,
+        outerBorderColor,
+        innerBackgroundColor,
+        fontSize,
+        fontWeight,
+        fontColor,
+      } = action.payload;
+      const selectedProfile = state.selectedProfile;
+      const addedItem = {
+        id: uuidv4(),
+        input,
+        text,
+        xPos,
+        yPos,
+        stickDiameter,
+        maxDistance,
+        outerBorderWidth,
+        outerBorderColor,
+        innerBackgroundColor,
+        fontSize,
+        fontWeight,
+        fontColor,
       };
       state.selectedProfile = {
         ...selectedProfile,
@@ -156,7 +246,7 @@ const slice = createSlice({
         ...selectedProfile,
         layout: selectedProfile.layout.filter(item => item.id != id),
       };
-      console.log(state.staticProfileCopy);
+
       state.staticProfileCopy = {
         ...state.staticProfileCopy,
         layout: state.staticProfileCopy.layout.filter(item => item.id != id),
@@ -176,6 +266,23 @@ const slice = createSlice({
         id,
         xPos,
         yPos,
+      };
+      state.selectedProfile = updatedProfile;
+    },
+
+    updateItemDimensions: (state, action) => {
+      const { id, width, height } = action.payload;
+      const selectedProfile = state.selectedProfile;
+      const updatedProfile = {
+        ...selectedProfile,
+        layout: [...selectedProfile.layout],
+      };
+      const itemIndex = updatedProfile.layout.findIndex(item => item.id == id);
+      updatedProfile.layout[itemIndex] = {
+        ...updatedProfile.layout[itemIndex],
+        id,
+        width,
+        height,
       };
       state.selectedProfile = updatedProfile;
     },
@@ -223,14 +330,18 @@ export const selectProfilesList = state => state.profiles.profilesList;
 export const selectSelectedProfile = state => state.profiles.selectedProfile;
 export const selectStaticProfileCopy = state =>
   state.profiles.staticProfileCopy;
+export const selectViewDimensions = state => state.profiles.viewDimensions;
 
 export const {
   selectProfile,
   deselectProfile,
   addItem,
+  addButton,
+  addStick,
   deleteItem,
   updateItemPosition,
   setViewDimensions,
+  updateItemDimensions,
 } = slice.actions;
 
 export default slice.reducer;

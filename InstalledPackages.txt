@@ -1,11 +1,62 @@
 npm install @reduxjs/toolkit
 npm install react-redux
 npm install @react-native-async-storage/async-storage
---> check for iOS CocoaPods https://react-native-async-storage.github.io/async-storage/docs/install/
+ran npx pod-install
+
 npm i react-native-draggable
+
 npm install --save react-native-vector-icons
 added "../../node_modules/react-native-vector-icons/fonts.gradle" to android/app/build.gradle
---> check for iOS CocoaPods https://github.com/oblador/react-native-vector-icons
+added "pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'" to Podfile and run pod update
+added 	<array>
+  		<string>AntDesign.ttf</string>
+  		<string>Entypo.ttf</string>
+  		<string>EvilIcons.ttf</string>
+  		<string>Feather.ttf</string>
+  		<string>FontAwesome.ttf</string>
+  		<string>FontAwesome5_Brands.ttf</string>
+  		<string>FontAwesome5_Regular.ttf</string>
+  		<string>FontAwesome5_Solid.ttf</string>
+  		<string>Foundation.ttf</string>
+  		<string>Ionicons.ttf</string>
+  		<string>MaterialIcons.ttf</string>
+  		<string>MaterialCommunityIcons.ttf</string>
+  		<string>SimpleLineIcons.ttf</string>
+  		<string>Octicons.ttf</string>
+  		<string>Zocial.ttf</string>
+  		<string>Fontisto.ttf</string>
+	</array>
+under <key>UIAppFonts</key> in Info.plist
+
 npm i react-native-modal
+
 added android:windowSoftInputMode="adjustPan" to AndroidManifest.xml
 added android:screenOrientation="landscape" to AndroidManifest.xml
+
+npm instal --save react-native-get-random-values
+ran npx pod-install
+
+npm i react-native-gesture-handler
+ran npx pod-install
+added the following to MainActivity.java:
++ import com.facebook.react.ReactActivityDelegate;
++ import com.facebook.react.ReactRootView;
++ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
++  @Override
++  protected ReactActivityDelegate createReactActivityDelegate() {
++    return new ReactActivityDelegate(this, getMainComponentName()) {
++      @Override
++      protected ReactRootView createRootView() {
++       return new RNGestureHandlerEnabledRootView(MainActivity.this);
++      }
++    };
++  }
+
+npm install --save react-native-udp
+ran cd ios && pod install && cd ..
+
+
+Updated react native gesture handler to 2.1.0:
+npm install --save react-native-gesture-handler 
+ran cd ios && pod install && cd ..
+added import 'react-native-gesture-handler'; to index.js
