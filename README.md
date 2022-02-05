@@ -9,5 +9,14 @@ Start up the server and you can start using your smartphone to emulate a control
 
 ![alt text](gifs/profiles.gif)
 
-## Create your own custom layout
+## Create your own custom layouts
 
+![alt text](gifs/layout.gif)
+
+## Adjust the sizes of buttons to your preference
+
+![alt text](gifs/resize.gif)
+
+## Connect to your PC and start playing!
+
+![alt text](gifs/play.gif)
