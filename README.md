@@ -6,8 +6,6 @@
   
   Although it is fully functional at the moment, some minor bugs exist such as errors that sometimes popup when resizing on iOS.
   
-  The server also currently works in a .NET coding environment and not as a standalone exectuble program (.exe file).
-  
   There are more planned features that include:
   
   1- Full customizability over styling of buttons
