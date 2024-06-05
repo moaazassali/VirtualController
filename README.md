@@ -1,8 +1,4 @@
 # Virtual Controller for Android and iOS
-  
-  <br/>
-  
-  Guide:
 
 First, download the server on your PC and install the app on your smartphone. 
 
