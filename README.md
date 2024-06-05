@@ -1,18 +1,4 @@
 # Virtual Controller for Android and iOS
-
-<b><i> NOTE: 
-  
-  This is still a work-in-progress app. 
-  
-  Although it is fully functional at the moment, some minor bugs exist such as errors that sometimes popup when resizing on iOS.
-  
-  There are more planned features that include:
-  
-  1- Full customizability over styling of buttons
-  
-  2- Resizing and styling customizability of sticks
-  
-  </i></b> 
   
   <br/>
   
